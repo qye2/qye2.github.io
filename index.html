@@ -53,7 +53,10 @@
         let tg=window.Telegram.WebApp;
         tg.expand();
         photo = document.getElementById("productDM0");
-        tg.sendData(photo.files[0]);
+        let data = {
+            photo: photo.felis[0]
+        }
+        tg.sendData(data);
         tg.close();
     }
 </script>
