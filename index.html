@@ -56,7 +56,7 @@
         let data = {
             photo: photo.files[0]
         }
-        tg.sendData(JSOM.stringify(data));
+        tg.sendData(JSON.stringify(data));
         tg.close();
     }
 </script>
