@@ -52,8 +52,8 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
-        let product = document.getElementById("productDM0")
-        tg.sendData(product,"натсроение");
+        let product = document.getElementById("productDM0").value;
+        tg.sendData(product);
         tg.close();
     }
 </script>
