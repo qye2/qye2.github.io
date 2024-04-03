@@ -52,12 +52,12 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
+        let product = get.getElementById("productDM0")
         let data = {
-            date: 111,
-            shesh: 2,
-            total: 12
+
         };
-        tg.sendData(JSON.stringify(data));
+        console.log(JSON.stringify(data))
+        tg.sendData(product);
         tg.close();
     }
 </script>
