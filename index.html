@@ -52,10 +52,10 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
-        let product = document.getElementById("productDM0");
-        console.log(product.value)
-        console.log(product)
-        tg.sendData(product);
+        let data = document.getElementById("productDM0");
+        console.log(data.value)
+        console.log(data)
+        tg.sendData(data);
         tg.close();
     }
 </script>
