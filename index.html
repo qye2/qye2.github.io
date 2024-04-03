@@ -50,14 +50,39 @@
     }
 
     function save() {
-        let tg=window.Telegram.WebApp;
-        tg.expand();
-        photo = document.getElementById("productDM0");
-        let data = {
-            photo: photo.files[0]
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    
+    // Получаем элемент input с id "productDM0"
+    let photoInput = document.getElementById("productDM0");
+    
+    // Создаем объект FormData
+    let formData = new FormData();
+    
+    // Добавляем файл в объект FormData
+    formData.append('photo', photoInput.files[0]);
+    
+    // Отправляем данные с использованием XMLHttpRequest
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'YOUR_API_ENDPOINT_HERE', true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Успешно отправлено
+            console.log('Фотография успешно отправлена');
+            
+            // Отправляем данные в приложение Telegram
+            tg.sendData(xhr.responseText);
+        } else {
+            // Обработка ошибок
+            console.error('Произошла ошибка при отправке фотографии');
         }
-        tg.sendData(JSON.stringify(data));
-        tg.close();
-    }
+    };
+    
+    // Отправляем FormData
+    xhr.send(formData);
+    
+    // Закрываем окно Telegram
+    tg.close();
+}
 </script>
 </html>
