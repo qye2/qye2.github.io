@@ -52,17 +52,11 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
-        let products = {};
-        for (let i = 0; i < productString.length; i++) {
-            let productIN = "productIN" + i;
-            let productElement = document.getElementById(productIN);
-            if (productElement.files.length > 0) {
-                let file = productElement.files[0];
-                console.log(file);
-            } else {
-            console.log("неи");
-            }
-        }
+        let data = {
+            date: 111,
+            shesh: 2,
+            total: 12
+        };
         console.log(products)
         tg.sendData(JSON.stringify(data));
         tg.close();
