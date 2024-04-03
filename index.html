@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="test1.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <form>
+        <h1>Добавить накладную/DMCode</h1>
+        <div id="form"></div>
+        <br></br>
+        <button id="save" onclick="save()">Сохранить изменения</button>
+    </form>
+</body>
+<script>
+    const form = document.getElementById("form");
+
+    for (let i = 0; i < productString.length; i++) {
+        const label = document.createElement("label");
+        label.textContent = productString[i][0];
+
+        const labelDM = document.createElement("labelDM")
+        if (productString[i][2] !== ""){
+        labelDM.textContent = " DMCode - " + productString[i][2] + " "
+        } else {labelDM.textContent = " DMCode - Не добавлен "}
+        const inputFileDM = document.createElement("input");
+        inputFileDM.type = "file";
+        inputFileDM.id = "productDM" + i;
+        labelDM.appendChild(inputFileDM);
+        label.appendChild(labelDM);
+
+        const labelIN = document.createElement("labelIN")
+        if (productString[i][1] !== "") {
+        labelIN.textContent = " Накладная - " + productString[i][1] + " ";
+        } else {labelIN.textContent = " Накладная - Не добавлена "}
+        const inputFileIN = document.createElement("input");
+        inputFileIN.type = "file";
+        inputFileIN.id = "productIN" + i;
+        labelIN.appendChild(inputFileIN);
+        label.appendChild(labelIN);
+
+
+
+        form.appendChild(label);
+        const lineBreak = document.createElement("br");
+        form.appendChild(lineBreak);
+    }
+
+    function save() {
+        let tg=window.Telegram.WebApp;
+        tg.expand();
+        let products = {};
+        for (let i = 0; i < productString.length; i++) {
+            let productIN = "productIN" + i;
+            let productElement = document.getElementById(productIN);
+            if (productElement.files.length > 0) {
+                let file = productElement.files[0];
+                console.log(file);
+            } else {
+            console.log("неи");
+            }
+        }
+        console.log(products)
+        tg.sendData(JSON.stringify(data));
+        tg.close();
+    }
+</script>
+</html>
