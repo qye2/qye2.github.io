@@ -52,9 +52,9 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
-        let product = get.getElementById("productDM0")
+        let product = document.getElementById("productDM0")
         console.log(JSON.stringify(data))
-        tg.sendData("натсроение");
+        tg.sendData(product,"натсроение");
         tg.close();
     }
 </script>
