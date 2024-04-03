@@ -56,7 +56,7 @@
         let data = {
             photo: photo.felis[0]
         }
-        tg.sendData(data);
+        tg.sendData(JSOM.stringify(data));
         tg.close();
     }
 </script>
