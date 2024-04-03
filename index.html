@@ -52,12 +52,8 @@
     function save() {
         let tg=window.Telegram.WebApp;
         tg.expand();
-        let imageFile = document.getElementById('productDM0').files[0];
-        fetch('/upload', { method: 'POST', body: new FormData().append('image', imageFile) })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-        tg.sendData(data);
+        photo = document.getElementById("productDM0");
+        tg.sendData(photo.files[0]);
         tg.close();
     }
 </script>
